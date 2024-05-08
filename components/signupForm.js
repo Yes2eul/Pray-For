@@ -1,7 +1,5 @@
-"use client";
-
 import { validateEmail, validatePassword } from "@/utils/validate";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function SignUpForm({ handleSignUp, error }) {
   const [signupInputs, setSignupInputs] = useState({

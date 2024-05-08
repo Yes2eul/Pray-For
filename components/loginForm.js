@@ -1,7 +1,5 @@
-"use client";
-
 import { validateEmail, validatePassword } from "@/utils/validate";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function LoginForm({ handleLogin, error }) {
   const [loginInputs, setLoginInputs] = useState({ email: "", password: "" });

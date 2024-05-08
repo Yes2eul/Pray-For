@@ -1,11 +1,17 @@
+"use client";
+
+import PostForm from "@/components/postForm";
 import React from "react";
 
-const PrayFor = () => {
+const Main = () => {
   return (
     <>
-      <main>본문</main>
+      <div>
+        <PostForm />
+      </div>
+      <div>리스트</div>
     </>
   );
 };
 
-export default PrayFor;
+export default Main;
