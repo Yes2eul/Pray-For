@@ -6,6 +6,9 @@ export default function SignUpForm({ handleSignUp, error }) {
     email: "",
     password: "",
     confirmPassword: "",
+    userName: "",
+    dob: "",
+    church: "",
   });
 
   const handleInputChange = (event) => {
@@ -31,6 +34,14 @@ export default function SignUpForm({ handleSignUp, error }) {
       return;
     }
 
+    if (signupInputs.userName.length > 2) {
+      setError("이름은 최소 2자 이상이어야 합니다.");
+    }
+
+    if (signupInputs.church.length > 2) {
+      setError("출석교회명은 최소 2자 이상이어야 합니다.");
+    }
+
     setError("");
     handleSignUp(signupInputs);
   };
@@ -38,7 +49,7 @@ export default function SignUpForm({ handleSignUp, error }) {
   return (
     <form onSubmit={handleSignUpSubmit} id="form">
       <input
-        placeholder="Email"
+        placeholder="이메일"
         type="email"
         id="email"
         name="email"
@@ -48,7 +59,7 @@ export default function SignUpForm({ handleSignUp, error }) {
       />
 
       <input
-        placeholder="Password"
+        placeholder="비밀번호"
         type="password"
         id="password"
         name="password"
@@ -58,11 +69,42 @@ export default function SignUpForm({ handleSignUp, error }) {
       />
 
       <input
-        placeholder="Confirm Password"
+        placeholder="비밀번호 확인"
         type="password"
         id="confirmPassword"
         name="confirmPassword"
         value={signupInputs.confirmPassword}
+        onChange={handleInputChange}
+        required
+      />
+
+      <input
+        placeholder="이름"
+        type="text"
+        id="userName"
+        name="userName"
+        value={signupInputs.userName}
+        onChange={handleInputChange}
+        required
+      />
+
+      <input
+        placeholder="생년월일 (yymmdd)"
+        type="number"
+        id="dob"
+        name="dob"
+        value={signupInputs.dob}
+        onChange={handleInputChange}
+        pattern="\d{6}"
+        required
+      />
+
+      <input
+        placeholder="출석교회 (*없으면 없음)"
+        type="text"
+        id="church"
+        name="church"
+        value={signupInputs.church}
         onChange={handleInputChange}
         required
       />

@@ -29,7 +29,7 @@ export default function LoginForm({ handleLogin, error }) {
   return (
     <form onSubmit={handleLogInSubmit} id="form">
       <input
-        placeholder="Email"
+        placeholder="이메일"
         type="email"
         id="email"
         name="email"
@@ -39,7 +39,7 @@ export default function LoginForm({ handleLogin, error }) {
       />
 
       <input
-        placeholder="Password"
+        placeholder="비밀번호"
         type="password"
         id="password"
         name="password"
