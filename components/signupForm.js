@@ -38,42 +38,39 @@ export default function SignUpForm({ handleSignUp, error }) {
   };
 
   return (
-    <form onSubmit={handleSignUpSubmit}>
-      <div>
-        <label htmlFor="email">이메일</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={signupInputs.email}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">비밀번호</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={signupInputs.password}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">비밀번호 확인</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          value={signupInputs.confirmPassword}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <button type="submit">회원가입</button>
+    <form onSubmit={handleSignUpSubmit} id="form">
+      <input
+        placeholder="Email"
+        type="email"
+        id="email"
+        name="email"
+        value={signupInputs.email}
+        onChange={handleInputChange}
+        required
+      />
+
+      <input
+        placeholder="Password"
+        type="password"
+        id="password"
+        name="password"
+        value={signupInputs.password}
+        onChange={handleInputChange}
+        required
+      />
+
+      <input
+        placeholder="Confirm Password"
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        value={signupInputs.confirmPassword}
+        onChange={handleInputChange}
+        required
+      />
+
       {error && <p>{error}</p>}
+      <button type="submit">회원가입</button>
     </form>
   );
 }

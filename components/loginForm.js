@@ -29,31 +29,29 @@ export default function LoginForm({ handleLogin, error }) {
   };
 
   return (
-    <form onSubmit={handleLogInSubmit}>
-      <div>
-        <label htmlFor="email">이메일</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={loginInputs.email}
-          onChange={handleInputChanges}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">비밀번호</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={loginInputs.password}
-          onChange={handleInputChanges}
-          required
-        />
-      </div>
-      <button type="submit">로그인</button>
+    <form onSubmit={handleLogInSubmit} id="form">
+      <input
+        placeholder="Email"
+        type="email"
+        id="email"
+        name="email"
+        value={loginInputs.email}
+        onChange={handleInputChanges}
+        required
+      />
+
+      <input
+        placeholder="Password"
+        type="password"
+        id="password"
+        name="password"
+        value={loginInputs.password}
+        onChange={handleInputChanges}
+        required
+      />
+
       {error && <p>{error}</p>}
+      <button type="submit">로그인</button>
     </form>
   );
 }
