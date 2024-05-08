@@ -1,4 +1,9 @@
 import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -9,4 +14,18 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication
+const auth = getAuth(app);
+
+// Email Login
+export const logInEmail = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
+};
+
+// Email SignUp
+export const signUpEmail = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
