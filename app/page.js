@@ -1,9 +1,7 @@
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <p>home</p>
+    <main role="main">
+      <p>로그인</p>
     </main>
   );
 }
