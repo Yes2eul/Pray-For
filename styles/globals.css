@@ -25,6 +25,11 @@ a {
 }
 
 #header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -106,9 +111,14 @@ a {
   background-color: #1a4d2e;
 }
 
-#form p {
+#form div {
+  width: auto;
+  height: 20px;
+}
+
+#form div p {
+  font-size: 14px;
   color: red;
-  margin: 10px auto;
 }
 
 /* post-form */

@@ -1,7 +1,12 @@
+import { auth, db } from "@/utils/firebase";
 import { validateEmail, validatePassword } from "@/utils/validate";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-export default function SignUpForm({ handleSignUp, error }) {
+export default function SignUpForm() {
+  const [error, setError] = useState("");
   const [signupInputs, setSignupInputs] = useState({
     email: "",
     password: "",
@@ -10,14 +15,20 @@ export default function SignUpForm({ handleSignUp, error }) {
     dob: "",
     church: "",
   });
+  const router = useRouter();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setSignupInputs({ ...signupInputs, [name]: value });
   };
 
-  const handleSignUpSubmit = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
+
+    if (!signupInputs.email || !signupInputs.password) {
+      setError("이메일 또는 비밀번호를 입력하세요.");
+      return;
+    }
 
     if (!validateEmail(signupInputs.email)) {
       setError("올바른 이메일 형식이 아닙니다.");
@@ -42,12 +53,33 @@ export default function SignUpForm({ handleSignUp, error }) {
       setError("출석교회명은 최소 2자 이상이어야 합니다.");
     }
 
-    setError("");
-    handleSignUp(signupInputs);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        signupInputs.email,
+        signupInputs.password
+      );
+
+      const userId = userCredential.user.uid;
+
+      await addDoc(collection(db, "users"), {
+        userId: userId,
+        userEmail: signupInputs.email,
+        userPassword: signupInputs.password,
+        userName: signupInputs.userName,
+        dob: signupInputs.dob,
+        church: signupInputs.church,
+      });
+
+      setError("");
+      router.push("/login");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
-    <form onSubmit={handleSignUpSubmit} id="form">
+    <form onSubmit={handleSignUp} id="form">
       <input
         placeholder="이메일"
         type="email"
@@ -89,13 +121,11 @@ export default function SignUpForm({ handleSignUp, error }) {
       />
 
       <input
-        placeholder="생년월일 (yymmdd)"
-        type="number"
+        type="date"
         id="dob"
         name="dob"
         value={signupInputs.dob}
         onChange={handleInputChange}
-        pattern="\d{6}"
         required
       />
 
@@ -109,7 +139,7 @@ export default function SignUpForm({ handleSignUp, error }) {
         required
       />
 
-      {error && <p>{error}</p>}
+      <div>{error && <p>{error}</p>}</div>
       <button type="submit">회원가입</button>
     </form>
   );
