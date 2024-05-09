@@ -22,8 +22,8 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <li onClick={() => router.push("/main")}>HOME</li>
-          <li>MYPAGE</li>
+          <li onClick={() => router.push("/home")}>HOME</li>
+          <li onClick={() => router.push("/mypage")}>MYPAGE</li>
           <li onClick={handleLogout}>LOGOUT</li>
         </ul>
       </nav>

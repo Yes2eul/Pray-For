@@ -36,7 +36,7 @@ export default function LoginForm() {
       const { email, password } = loginInputs;
       await signInWithEmailAndPassword(auth, email, password);
       setError("");
-      router.push("/main");
+      router.push("/home");
     } catch (error) {
       setError(error.message);
     }
