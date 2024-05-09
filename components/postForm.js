@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./post.module.css";
 
 const PostForm = () => {
   const [post, setPost] = useState("");
@@ -13,7 +14,7 @@ const PostForm = () => {
   };
 
   return (
-    <form onSubmit={handlePostSubmit} id="post-form">
+    <form onSubmit={handlePostSubmit} className={styles.post}>
       <input
         placeholder="감사 or 기도제목을 나눠주세요."
         type="text"

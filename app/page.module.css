@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: auto;
+}
+
+.main button {
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  background-color: #4f6f52;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.main button:hover {
+  background-color: #1a4d2e;
+}

@@ -3,6 +3,7 @@ import { validateEmail, validatePassword } from "@/utils/validate";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import styles from "./form.module.css";
 
 export default function LoginForm() {
   const [error, setError] = useState("");
@@ -43,7 +44,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleLogIn} id="form">
+    <form onSubmit={handleLogIn} className={styles.form}>
       <input
         placeholder="이메일"
         type="email"

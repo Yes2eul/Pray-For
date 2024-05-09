@@ -1,0 +1,42 @@
+.header {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+}
+
+.header div h1 {
+  float: left;
+  text-align: center;
+  line-height: 80px;
+  width: 70%;
+
+  cursor: pointer;
+}
+
+.header nav {
+  float: right;
+
+  width: 30%;
+  height: 80px;
+}
+
+.header nav ul li {
+  float: left;
+
+  width: 33.33333%;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+
+  cursor: pointer;
+}
+
+.header div h1,
+.header nav ul li {
+  background-color: #f5efe6;
+}
+
+.header div h1:hover,
+.header nav ul li:hover {
+  background-color: #e8dfca;
+}

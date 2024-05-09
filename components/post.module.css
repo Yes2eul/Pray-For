@@ -1,0 +1,32 @@
+.post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.post input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.post button {
+  width: 80px;
+  height: 33px;
+  margin: 10px;
+  background-color: #4f6f52;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.post button:hover {
+  background-color: #1a4d2e;
+}

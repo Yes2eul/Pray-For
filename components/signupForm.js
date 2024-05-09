@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import styles from "./form.module.css";
 
 export default function SignUpForm() {
   const [error, setError] = useState("");
@@ -79,7 +80,7 @@ export default function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSignUp} id="form">
+    <form onSubmit={handleSignUp} className={styles.form}>
       <input
         placeholder="이메일"
         type="email"
