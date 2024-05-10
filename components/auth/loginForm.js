@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import styles from "./form.module.css";
+import { saveAuthTokenToSession } from "@/utils/auth";
 
 export default function LoginForm() {
   const [error, setError] = useState("");
@@ -36,6 +37,7 @@ export default function LoginForm() {
     try {
       const { email, password } = loginInputs;
       await signInWithEmailAndPassword(auth, email, password);
+      await saveAuthTokenToSession();
       setError("");
       router.push("/home");
     } catch (error) {
