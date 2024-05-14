@@ -61,10 +61,8 @@ export default function SignUpForm() {
         signupInputs.password
       );
 
-      const userId = userCredential.user.uid;
-
       await addDoc(collection(db, "users"), {
-        userId: userId,
+        uid: userCredential.user.uid,
         userEmail: signupInputs.email,
         userPassword: signupInputs.password,
         userName: signupInputs.userName,

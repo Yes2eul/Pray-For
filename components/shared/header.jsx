@@ -4,17 +4,21 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import styles from "./header.module.css";
 import { auth } from "@/utils/firebase";
-import useUserInfo from "../../hooks/useUserInfo";
 import { removeAuthTokenFromSession } from "@/utils/auth";
 
 const Header = () => {
   const router = useRouter();
-  const user = useUserInfo();
+  const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setIsLoggedIn(!!user);
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
     });
     return () => unsubscribe();
   }, []);
@@ -50,7 +54,7 @@ const Header = () => {
       <nav>
         <ul>
           <li onClick={() => handleNavigation("/home")}>HOME</li>
-          <li onClick={() => handleNavigation(`/${user?.userId}`)}>MYPAGE</li>
+          <li onClick={() => handleNavigation(`/${user?.uid}`)}>MYPAGE</li>
           <li onClick={handleLogout}>LOGOUT</li>
         </ul>
       </nav>
