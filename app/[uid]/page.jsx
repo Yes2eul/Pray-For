@@ -1,3 +1,5 @@
+"use client";
+
 import UserProfile from "@/components/userProfile";
 import React from "react";
 

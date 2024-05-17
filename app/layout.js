@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
+import { AuthProvider } from "@/utils/useAuth";
 
 export const metadata = {
   title: "Pray For",
@@ -9,12 +10,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body id="container">
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body id="container">
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

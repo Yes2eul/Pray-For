@@ -1,27 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./header.module.css";
 import { auth } from "@/utils/firebase";
-import { removeAuthTokenFromSession } from "@/utils/auth";
+import { removeAuthTokenFromSession } from "@/utils/setToken";
+import { useAuth } from "@/utils/useAuth";
 
 const Header = () => {
   const router = useRouter();
-  const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user);
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+  const { user, isLoggedIn } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -54,7 +42,7 @@ const Header = () => {
       <nav>
         <ul>
           <li onClick={() => handleNavigation("/home")}>HOME</li>
-          <li onClick={() => handleNavigation(`/${user?.uid}`)}>MYPAGE</li>
+          <li onClick={() => handleNavigation(`/${user.uid}`)}>MYPAGE</li>
           <li onClick={handleLogout}>LOGOUT</li>
         </ul>
       </nav>

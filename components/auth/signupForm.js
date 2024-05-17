@@ -1,7 +1,7 @@
 import { auth, db } from "@/utils/firebase";
 import { validateEmail, validatePassword } from "@/utils/validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import styles from "./form.module.css";
@@ -61,14 +61,16 @@ export default function SignUpForm() {
         signupInputs.password
       );
 
-      await addDoc(collection(db, "users"), {
+      const newUser = {
         uid: userCredential.user.uid,
         userEmail: signupInputs.email,
         userPassword: signupInputs.password,
         userName: signupInputs.userName,
         dob: signupInputs.dob,
         church: signupInputs.church,
-      });
+      };
+
+      await setDoc(doc(db, "users", newUser.uid), newUser);
 
       setError("");
       router.push("/login");
