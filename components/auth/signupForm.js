@@ -68,6 +68,7 @@ export default function SignUpForm() {
         userName: signupInputs.userName,
         dob: signupInputs.dob,
         church: signupInputs.church,
+        posts: [],
       };
 
       await setDoc(doc(db, "users", newUser.uid), newUser);

@@ -1,11 +1,20 @@
+"use client";
+
 import React, { useState } from "react";
 import styles from "./post.module.css";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  Timestamp,
+  arrayUnion,
+  collection,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "@/utils/firebase";
+import { useAuth } from "@/utils/useAuth";
 
 const PostForm = () => {
+  const auth = useAuth();
   const [postContent, setPostContent] = useState("");
-  const [likes, setLikes] = useState(0);
 
   const handlePostChange = (event) => {
     setPostContent(event.target.value);
@@ -14,12 +23,25 @@ const PostForm = () => {
   const handlePostSubmit = async (event) => {
     event.preventDefault();
     try {
-      await addDoc(collection(db, `users/${user.userId}/posts`), {
-        postId: post.uid,
+      const user = auth.user;
+      if (!user) {
+        alert("사용자가 로그인되지 않았습니다.");
+      }
+
+      const newPost = {
+        postId: doc(collection(db, "posts")).id,
         postContent: postContent,
-        timestamp: serverTimestamp(),
-        likes: likes,
+        timestamp: Timestamp.now(),
+        likes: {
+          count: 0,
+          likedUsers: [],
+        },
+      };
+
+      await updateDoc(doc(db, `users/${user.uid}`), {
+        posts: arrayUnion(newPost),
       });
+
       setPostContent("");
     } catch (error) {
       alert(error.message);
