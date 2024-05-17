@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "@/components/shared/header";
 import Footer from "@/components/shared/footer";
-import { AuthProvider } from "@/utils/useAuth";
+import { AuthProvider } from "@/hooks/useAuth";
 
 export const metadata = {
   title: "Pray For",

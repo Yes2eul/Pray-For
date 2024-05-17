@@ -5,7 +5,7 @@ import React from "react";
 import styles from "./header.module.css";
 import { auth } from "@/utils/firebase";
 import { removeAuthTokenFromSession } from "@/utils/setToken";
-import { useAuth } from "@/utils/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
   const router = useRouter();
