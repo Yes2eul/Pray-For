@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.backButton {
+  width: 40px;
+  height: 40px;
+  background-color: #4f6f52;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backButton:hover {
+  background-color: #1a4d2e;
+}
+
+.backButton p {
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+}
+
+.postList {
+  list-style: none;
+  padding: 0;
+}
+
+.post {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.content {
+  margin-bottom: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
