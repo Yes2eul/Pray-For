@@ -1,12 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
 import styles from "./profile.module.css";
 
 const UserProfile = () => {
-  const router = useRouter();
   const { user } = useAuth();
   const userInfo = UseUserInfo(user);
 
