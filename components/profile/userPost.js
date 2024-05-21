@@ -12,7 +12,6 @@ const UserPost = () => {
     <>
       {userPosts && (
         <ul>
-          <div>Posts</div>
           {userPosts.posts.map((post, index) => (
             <li key={index}>
               <p>{post.postContent}</p>

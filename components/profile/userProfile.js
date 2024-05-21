@@ -3,10 +3,13 @@
 import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
 import styles from "./profile.module.css";
+import { usePathname, useRouter } from "next/navigation";
 
 const UserProfile = () => {
   const { user } = useAuth();
   const userInfo = UseUserInfo(user);
+  const router = useRouter();
+  const pathName = usePathname();
 
   const maskPassword = (password) => {
     return "*".repeat(password.length);
@@ -33,6 +36,11 @@ const UserProfile = () => {
 
           <label>출석교회 이름</label>
           <input readOnly type="text" value={userInfo.church} />
+
+          <button onClick={() => router.push(`${pathName}/mypray`)}>
+            <p>나의 기도제목</p>
+            <p>{">"}</p>
+          </button>
         </div>
       )}
     </>

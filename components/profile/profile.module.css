@@ -26,3 +26,25 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
+.info button {
+  width: 100%;
+  margin: 10px auto 15px auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #4f6f52;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info button:hover {
+  background-color: #1a4d2e;
+}
+
+.info button p {
+  font-size: 14px;
+  color: #fff;
+}
