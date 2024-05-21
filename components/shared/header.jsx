@@ -28,7 +28,6 @@ const Header = () => {
     if (isLoggedIn) {
       router.push(path);
     } else {
-      alert("로그인 후 이용 가능합니다.");
       router.push("/login");
     }
   };
@@ -42,7 +41,11 @@ const Header = () => {
       <nav>
         <ul>
           <li onClick={() => handleNavigation("/home")}>HOME</li>
-          <li onClick={() => handleNavigation(`/${user.uid}`)}>MYPAGE</li>
+          {isLoggedIn ? (
+            <li onClick={() => handleNavigation(`/${user.uid}`)}>MYPAGE</li>
+          ) : (
+            <li onClick={() => handleNavigation("/login")}>LOGIN</li>
+          )}
           <li onClick={handleLogout}>LOGOUT</li>
         </ul>
       </nav>
