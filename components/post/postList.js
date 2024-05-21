@@ -7,6 +7,7 @@ import getTimeDifference from "@/hooks/getTimeDifference";
 
 const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [sortBy, setSortBy] = useState("desc"); // 최신순
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -25,6 +26,12 @@ const PostList = () => {
           }
         });
 
+        if (sortBy === "asc") {
+          posts.sort((a, b) => a.timestamp - b.timestamp);
+        } else {
+          posts.sort((a, b) => b.timestamp - a.timestamp);
+        }
+
         setAllPosts(posts);
       } catch (error) {
         console.error(error);
@@ -32,7 +39,11 @@ const PostList = () => {
     };
 
     fetchAllPosts();
-  }, []);
+  }, [sortBy]);
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
 
   const maskName = (name) => {
     return name.charAt(0) + "*".repeat(name.length - 1);
@@ -43,24 +54,30 @@ const PostList = () => {
   };
 
   return (
-    <div>
-      {allPosts.length > 0 ? (
-        <ul>
-          {allPosts.map((post, index) => (
-            <li key={index}>
-              <p>{post.userName}</p>
-              <p>{post.postContent}</p>
-              <p>{getTimeDifference(post.timestamp.toDate())}</p>
-              <button onClick={() => countLikes(index)}>
-                기도 {post.likes.count}
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <>
+      <select value={sortBy} onChange={handleSortChange}>
+        <option value="desc">최신순</option>
+        <option value="asc">오래된순</option>
+      </select>
+      <div>
+        {allPosts.length > 0 ? (
+          <ul>
+            {allPosts.map((post, index) => (
+              <li key={index}>
+                <p>{post.userName}</p>
+                <p>{post.postContent}</p>
+                <p>{getTimeDifference(post.timestamp.toDate())}</p>
+                <button onClick={() => countLikes(index)}>
+                  기도 {post.likes.count}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
+    </>
   );
 };
 
