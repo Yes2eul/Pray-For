@@ -2,7 +2,7 @@
 import React from "react";
 import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
-import useTimeDifference from "@/hooks/useTimeDifference";
+import getTimeDifference from "@/hooks/getTimeDifference";
 
 const UserPost = () => {
   const { user } = useAuth();
@@ -12,12 +12,12 @@ const UserPost = () => {
     <>
       {userPosts && (
         <ul>
-          <div>Posts:</div>
+          <div>Posts</div>
           {userPosts.posts.map((post, index) => (
             <li key={index}>
-              <p>Content: {post.postContent}</p>
-              <p>date: {useTimeDifference(post.timestamp)}</p>
-              <p>likes: {post.likes.count}</p>
+              <p>{post.postContent}</p>
+              <p>{getTimeDifference(post.timestamp.toDate())}</p>
+              <p>{post.likes.count}</p>
             </li>
           ))}
         </ul>

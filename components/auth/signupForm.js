@@ -48,10 +48,12 @@ export default function SignUpForm() {
 
     if (signupInputs.userName.length > 2) {
       setError("이름은 최소 2자 이상이어야 합니다.");
+      return;
     }
 
     if (signupInputs.church.length > 2) {
-      setError("출석교회명은 최소 2자 이상이어야 합니다.");
+      setError("출석교회 이름은 최소 2자 이상이어야 합니다.");
+      return;
     }
 
     try {
@@ -132,7 +134,7 @@ export default function SignUpForm() {
       />
 
       <input
-        placeholder="출석교회 (*없으면 없음)"
+        placeholder="출석교회 이름(*없으면 없음)"
         type="text"
         id="church"
         name="church"
