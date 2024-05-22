@@ -6,13 +6,9 @@
   display: flex;
   align-items: center;
 
-  height: 15%;
+  height: 10%;
 }
 
 .list {
-  height: 75%;
-}
-
-.page {
-  height: 10%;
+  height: 90%;
 }

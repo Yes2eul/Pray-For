@@ -9,6 +9,7 @@ import styles from "./list.module.css";
 const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [sortBy, setSortBy] = useState("desc"); // 최신순
+  const [visiblePosts, setVisiblePosts] = useState(5);
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -54,6 +55,10 @@ const PostList = () => {
     // 좋아요
   };
 
+  const loadMorePosts = () => {
+    setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 10);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.selectContainer}>
@@ -66,9 +71,10 @@ const PostList = () => {
           <option value="asc">오래된순</option>
         </select>
       </div>
+
       {allPosts.length > 0 ? (
         <ul className={styles.postList}>
-          {allPosts.map((post, index) => (
+          {allPosts.slice(0, visiblePosts).map((post, index) => (
             <li key={index} className={styles.post}>
               <p className={styles.author}>{post.userName}</p>
               <p className={styles.content}>{post.postContent}</p>
@@ -95,6 +101,13 @@ const PostList = () => {
               </div>
             </li>
           ))}
+          {visiblePosts < allPosts.length && (
+            <div className={styles.moreBtn}>
+              <button onClick={loadMorePosts} className={styles.button}>
+                더 보기
+              </button>
+            </div>
+          )}
         </ul>
       ) : (
         <p>Loading...</p>

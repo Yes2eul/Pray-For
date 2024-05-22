@@ -17,6 +17,7 @@ const UserPost = () => {
         <button onClick={() => router.back()} className={styles.backButton}>
           <p>{"<"}</p>
         </button>
+
         {userPosts ? (
           <ul className={styles.postList}>
             {userPosts.posts.map((post, index) => (

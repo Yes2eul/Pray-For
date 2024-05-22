@@ -14,7 +14,6 @@ const Home = () => {
       <div className={styles.list}>
         <PostList />
       </div>
-      <div className={styles.page}>pagenation</div>
     </div>
   );
 };

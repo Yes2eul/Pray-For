@@ -12,12 +12,22 @@
 }
 
 .select {
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+
+  padding: 5px;
   margin-bottom: 20px;
 }
 
 .postList {
   list-style: none;
   padding: 0;
+
+  overflow-y: auto; /* 세로 스크롤 */
+  max-height: 480px;
 }
 
 .post {
@@ -48,7 +58,8 @@
   vertical-align: middle;
 }
 
-.button {
+.button,
+.loadMoreButton {
   background-color: #4f6f52;
   color: #fff;
   border: none;
@@ -57,6 +68,13 @@
   cursor: pointer;
 }
 
-.button:hover {
+.button:hover,
+.loadMoreButton:hover {
   background-color: #1a4d2e;
+}
+
+.moreBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
