@@ -7,9 +7,9 @@
   padding: 10px;
 }
 
-.info p {
+.info h4 {
   font-size: 18px;
-  margin: 10px auto;
+  margin: 30px auto;
 }
 
 .info label {
@@ -46,4 +46,5 @@
 .info button p {
   font-size: 14px;
   color: #fff;
+  margin: 10px auto;
 }

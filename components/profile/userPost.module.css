@@ -13,10 +13,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 15px auto 15px 10px;
 }
 
 .backButton:hover {
@@ -27,6 +24,11 @@
   font-size: 14px;
   color: #fff;
   margin: 0;
+}
+
+.postContainer {
+  overflow-y: auto; /* 세로 스크롤 */
+  max-height: 500px;
 }
 
 .postList {
@@ -51,4 +53,23 @@
   align-items: center;
   font-size: 14px;
   color: #555;
+}
+
+.loadMoreButton {
+  background-color: #4f6f52;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.loadMoreButton:hover {
+  background-color: #1a4d2e;
+}
+
+.moreBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

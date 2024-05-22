@@ -9,7 +9,7 @@ import styles from "./list.module.css";
 const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [sortBy, setSortBy] = useState("desc"); // 최신순
-  const [visiblePosts, setVisiblePosts] = useState(5);
+  const [visiblePosts, setVisiblePosts] = useState(6);
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -56,7 +56,7 @@ const PostList = () => {
   };
 
   const loadMorePosts = () => {
-    setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 10);
+    setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 5);
   };
 
   return (

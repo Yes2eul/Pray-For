@@ -19,7 +19,7 @@ const UserProfile = () => {
     <>
       {userInfo && (
         <div className={styles.info}>
-          <p>안녕하세요, {userInfo.userName}님</p>
+          <h4>안녕하세요, {userInfo.userName}님</h4>
 
           <label>이메일</label>
           <input readOnly type="email" value={userInfo.userEmail} />
