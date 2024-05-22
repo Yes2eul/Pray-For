@@ -1,5 +1,10 @@
 import { auth, db } from "@/utils/firebase";
-import { validateEmail, validatePassword } from "@/utils/validate";
+import {
+  validateChurch,
+  validateEmail,
+  validateName,
+  validatePassword,
+} from "@/utils/validate";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -46,13 +51,13 @@ export default function SignUpForm() {
       return;
     }
 
-    if (signupInputs.userName.length > 2) {
-      setError("이름은 최소 2자 이상이어야 합니다.");
+    if (!validateName(signupInputs.userName)) {
+      setError("이름은 한글 2글자 이상이어야 합니다.");
       return;
     }
 
-    if (signupInputs.church.length > 2) {
-      setError("출석교회 이름은 최소 2자 이상이어야 합니다.");
+    if (!validateChurch(signupInputs.church)) {
+      setError("출석교회 이름은 한글 2글자 이상이어야 합니다.");
       return;
     }
 
