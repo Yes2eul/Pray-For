@@ -11,7 +11,7 @@ const Footer = () => {
         <p>
           의견 보내기:
           <a href="https://forms.gle/AoCVcnsn7zc2LrSD6">
-            {" https://forms.gle/AoCVcnsn7zc2LrSD6"}
+            {" forms.gle/AoCVcnsn7zc2LrSD6"}
           </a>
         </p>
       </div>
