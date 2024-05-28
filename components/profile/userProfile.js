@@ -32,7 +32,7 @@ const UserProfile = () => {
           />
 
           <label>생년월일</label>
-          <input readOnly type="date" value={userInfo.dob} />
+          <input readOnly type="text" value={userInfo.dob} />
 
           <label>출석교회 이름</label>
           <input readOnly type="text" value={userInfo.church} />
