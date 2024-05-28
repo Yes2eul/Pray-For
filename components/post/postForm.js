@@ -53,7 +53,7 @@ const PostForm = () => {
   return (
     <form onSubmit={handlePostSubmit} className={styles.post}>
       <input
-        placeholder="감사 or 기도제목을 나눠주세요."
+        placeholder="감사와 기도제목을 나눠주세요."
         type="text"
         id="post"
         name="post"

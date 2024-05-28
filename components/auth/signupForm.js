@@ -130,6 +130,7 @@ export default function SignUpForm() {
       />
 
       <input
+        placeholder="생년월일"
         type="date"
         id="dob"
         name="dob"

@@ -30,3 +30,17 @@
 .post button:hover {
   background-color: #1a4d2e;
 }
+
+@media screen and (max-width: 768px) {
+  .post {
+    max-width: 320px;
+  }
+
+  .post input {
+    width: 80%;
+  }
+
+  .post button {
+    width: 20%;
+  }
+}

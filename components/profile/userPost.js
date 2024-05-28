@@ -18,7 +18,7 @@ const UserPost = () => {
   return (
     <div className={styles.container}>
       <div className={styles.postContainer}>
-        {userPosts ? (
+        {userPosts && userPosts.posts.length > 0 ? (
           <>
             <ul className={styles.postList}>
               {userPosts.posts.slice(0, visiblePosts).map((post, index) => (
@@ -43,7 +43,7 @@ const UserPost = () => {
             )}
           </>
         ) : (
-          <p>Loading...</p>
+          <p>작성된 글이 없습니다.</p>
         )}
       </div>
     </div>
