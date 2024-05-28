@@ -1,6 +1,7 @@
 import { auth, db } from "@/utils/firebase";
 import {
   validateChurch,
+  validateDate,
   validateEmail,
   validateName,
   validatePassword,
@@ -25,40 +26,39 @@ export default function SignUpForm() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setSignupInputs({ ...signupInputs, [name]: value });
+    if (name === "dob" && value.length <= 10) {
+      const formattedValue = value
+        .replace(/\D/g, "") // 숫자만 허용
+        .replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3"); // yyyy-mm-dd 형식으로 변환
+      setSignupInputs({ ...signupInputs, [name]: formattedValue });
+    } else {
+      setSignupInputs({ ...signupInputs, [name]: value });
+    }
   };
 
   const handleSignUp = async (event) => {
     event.preventDefault();
 
     if (!signupInputs.email || !signupInputs.password) {
-      setError("이메일 또는 비밀번호를 입력하세요.");
-      return;
+      return setError("이메일 또는 비밀번호를 입력하세요.");
     }
-
     if (!validateEmail(signupInputs.email)) {
-      setError("올바른 이메일 형식이 아닙니다.");
-      return;
+      return setError("올바른 이메일 형식이 아닙니다.");
     }
-
     if (!validatePassword(signupInputs.password)) {
-      setError("비밀번호는 최소 8자 이상이어야 합니다.");
-      return;
+      return setError("비밀번호는 최소 8자 이상이어야 합니다.");
     }
-
     if (signupInputs.password !== signupInputs.confirmPassword) {
-      setError("비밀번호가 일치하지 않습니다.");
-      return;
+      return setError("비밀번호가 일치하지 않습니다.");
     }
-
     if (!validateName(signupInputs.userName)) {
-      setError("이름은 한글 2글자 이상이어야 합니다.");
-      return;
+      return setError("이름은 한글 2글자 이상이어야 합니다.");
     }
-
+    if (!validateDate(signupInputs.dob)) {
+      return setError("유효한 날짜를 입력해주세요.");
+    }
     if (!validateChurch(signupInputs.church)) {
-      setError("출석교회 이름은 한글 2글자 이상이어야 합니다.");
-      return;
+      return setError("출석교회 이름은 한글 2글자 이상이어야 합니다.");
     }
 
     try {
@@ -130,12 +130,13 @@ export default function SignUpForm() {
       />
 
       <input
-        placeholder="생년월일"
-        type="date"
+        placeholder="생년월일 (yyyy-mm-dd)"
+        type="text"
         id="dob"
         name="dob"
         value={signupInputs.dob}
         onChange={handleInputChange}
+        maxLength="10"
         required
       />
 
