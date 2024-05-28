@@ -8,7 +8,12 @@ const Footer = () => {
         <p>&copy; 2024. All Rights Reserved.</p>
       </div>
       <div className={styles.contact}>
-        <p>Contact</p>
+        <p>
+          의견 보내기:
+          <a href="https://forms.gle/AoCVcnsn7zc2LrSD6">
+            {"https://forms.gle/AoCVcnsn7zc2LrSD6"}
+          </a>
+        </p>
       </div>
     </footer>
   );
