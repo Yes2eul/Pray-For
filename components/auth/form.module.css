@@ -42,3 +42,14 @@
   font-size: 14px;
   color: red;
 }
+
+.form span {
+  margin: 15px auto;
+  font-size: 14px;
+  color: #999;
+}
+
+.form span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

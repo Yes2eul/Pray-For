@@ -151,6 +151,13 @@ export default function SignUpForm() {
 
       <div>{error && <p>{error}</p>}</div>
       <button type="submit">회원가입</button>
+      <span
+        onClick={() => {
+          router.push("/login");
+        }}
+      >
+        {"< 로그인하러 가기"}
+      </span>
     </form>
   );
 }
