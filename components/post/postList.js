@@ -5,11 +5,13 @@ import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import getTimeDifference from "@/hooks/getTimeDifference";
 import styles from "./list.module.css";
+import { useAuth } from "@/hooks/useAuth";
 
 const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [sortBy, setSortBy] = useState("desc"); // 최신순
   const [visiblePosts, setVisiblePosts] = useState(6);
+  const { isLoggedIn, user } = useAuth();
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -23,6 +25,7 @@ const PostList = () => {
             const userPosts = userData.posts.map((post) => ({
               ...post,
               userName: maskName(userData.userName),
+              postId: post.postId,
             }));
             posts = [...posts, ...userPosts];
           }
@@ -51,12 +54,20 @@ const PostList = () => {
     return name.charAt(0) + "*".repeat(name.length - 1);
   };
 
-  const countLikes = (index) => {
-    // 좋아요
-  };
-
   const loadMorePosts = () => {
     setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 5);
+  };
+
+  const toggleLike = async (postId) => {
+    if (!isLoggedIn) {
+      alert("로그인 후 이용 가능합니다.");
+      return;
+    }
+
+    try {
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -81,7 +92,7 @@ const PostList = () => {
               <div className={styles.details}>
                 <p>{getTimeDifference(post.timestamp.toDate())}</p>
                 <button
-                  onClick={() => countLikes(index)}
+                  onClick={() => toggleLike(post.postId)}
                   className={styles.button}
                 >
                   <svg
