@@ -32,9 +32,17 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    if (isLoggedIn) {
+      router.push("/home");
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <header className={styles.header}>
-      <div onClick={() => router.push("/")}>
+      <div onClick={handleLogoClick}>
         <h1>Pray For</h1>
       </div>
 
