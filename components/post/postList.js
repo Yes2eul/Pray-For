@@ -1,17 +1,25 @@
 "use client";
 
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/firebase";
 import getTimeDifference from "@/hooks/getTimeDifference";
 import styles from "./list.module.css";
 import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const PostList = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [sortBy, setSortBy] = useState("desc"); // 최신순
   const [visiblePosts, setVisiblePosts] = useState(6);
-  const { isLoggedIn, user } = useAuth();
+  const router = useRouter("");
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -25,7 +33,9 @@ const PostList = () => {
             const userPosts = userData.posts.map((post) => ({
               ...post,
               userName: maskName(userData.userName),
+              userId: doc.id,
               postId: post.postId,
+              likes: post.likes || { count: 0, likedUsers: [] },
             }));
             posts = [...posts, ...userPosts];
           }
@@ -58,13 +68,45 @@ const PostList = () => {
     setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 5);
   };
 
-  const toggleLike = async (postId) => {
-    if (!isLoggedIn) {
+  const toggleLike = async (postId, userId) => {
+    if (!user) {
       alert("로그인 후 이용 가능합니다.");
+      router.push("/login");
       return;
     }
 
     try {
+      const postRef = doc(db, "users", userId);
+      const postSnapshot = await getDoc(postRef);
+
+      if (postSnapshot.exists()) {
+        const userData = postSnapshot.data();
+        const posts = userData.posts;
+        const postIndex = posts.findIndex((post) => post.postId === postId);
+
+        if (postIndex !== -1) {
+          const post = posts[postIndex];
+          let updatedLikes;
+
+          if (post.likes.likedUsers.includes(user.uid)) {
+            updatedLikes = {
+              count: post.likes.count - 1,
+              likedUsers: post.likes.likedUsers.filter(
+                (uid) => uid !== user.uid
+              ),
+            };
+          } else {
+            updatedLikes = {
+              count: post.likes.count + 1,
+              likedUsers: [...post.likes.likedUsers, user.uid],
+            };
+          }
+
+          posts[postIndex] = { ...post, likes: updatedLikes };
+          await updateDoc(postRef, { posts });
+          window.location.reload();
+        }
+      }
     } catch (error) {
       console.error(error);
     }
@@ -92,8 +134,12 @@ const PostList = () => {
               <div className={styles.details}>
                 <p>{getTimeDifference(post.timestamp.toDate())}</p>
                 <button
-                  onClick={() => toggleLike(post.postId)}
-                  className={styles.button}
+                  onClick={() => toggleLike(post.postId, post.userId)}
+                  className={`${styles.button} ${
+                    post.likes.likedUsers.includes(user?.uid)
+                      ? styles.liked
+                      : ""
+                  }`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

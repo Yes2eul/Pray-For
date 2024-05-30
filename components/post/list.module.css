@@ -73,6 +73,14 @@
   background-color: #1a4d2e;
 }
 
+.button.liked {
+  background-color: #1a4d2e; /* 좋아요 버튼 눌렀을 때 색상 */
+}
+
+.button.liked:hover {
+  background-color: #4f6f52; /* 좋아요 버튼 취소시 원래 색상 */
+}
+
 .moreBtn {
   display: flex;
   justify-content: center;

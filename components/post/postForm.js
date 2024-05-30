@@ -11,10 +11,12 @@ import {
 } from "firebase/firestore";
 import { db } from "@/utils/firebase";
 import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const PostForm = () => {
   const auth = useAuth();
   const [postContent, setPostContent] = useState("");
+  const router = useRouter("");
 
   const handlePostChange = (event) => {
     setPostContent(event.target.value);
@@ -25,7 +27,8 @@ const PostForm = () => {
     try {
       const user = auth.user;
       if (!user) {
-        alert("사용자가 로그인되지 않았습니다.");
+        alert("로그인 후 이용 가능합니다.");
+        router.push("/login");
       }
 
       const newPost = {
@@ -46,7 +49,7 @@ const PostForm = () => {
       alert("등록되었습니다.");
       window.location.reload();
     } catch (error) {
-      alert(error.message);
+      console.error(error);
     }
   };
 
