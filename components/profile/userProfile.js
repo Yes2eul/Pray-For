@@ -41,6 +41,11 @@ const UserProfile = () => {
             <p>나의 기도제목</p>
             <p>{">"}</p>
           </button>
+
+          {/* <button onClick={() => router.push(`${pathName}/urpray`)}>
+            <p>함께한 기도제목</p>
+            <p>{">"}</p>
+          </button> */}
         </div>
       )}
     </>
