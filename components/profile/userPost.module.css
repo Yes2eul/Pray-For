@@ -55,6 +55,11 @@
   color: #555;
 }
 
+.icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
 .loadMoreButton {
   background-color: #4f6f52;
   color: #fff;
