@@ -41,10 +41,15 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .content {
   margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .details {
