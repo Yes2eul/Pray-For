@@ -55,7 +55,7 @@ const PostForm = () => {
 
   return (
     <form onSubmit={handlePostSubmit} className={styles.post}>
-      <input
+      <textarea
         placeholder="감사와 기도제목을 나눠주세요."
         type="text"
         id="post"
