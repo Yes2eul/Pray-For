@@ -1,9 +1,10 @@
 import React from "react";
+import styles from "./page.module.css";
 
 const About = () => {
   return (
-    <div>
-      Pray For은 서로의 감사와 기도제목을 공유하는 크리스천 플랫폼입니다.
+    <div className={styles.about}>
+      <img src="/about(green).png" width={500} height={500} />
     </div>
   );
 };

@@ -29,8 +29,8 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div onClick={handleLogoClick}>
-        <h1>Pray For</h1>
+      <div onClick={handleLogoClick} className={styles.logo}>
+        <img src="/logo.png" />
       </div>
 
       <nav>

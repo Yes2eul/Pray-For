@@ -7,28 +7,26 @@
   width: 100%;
 }
 
-.box svg {
+/* .box svg {
   margin: auto;
 }
 
 .box p {
   width: auto;
-  margin: 10px 30px 20px 30px;
-
-  font-size: 12px;
-  font-style: italic;
-}
+  margin: 0px 30px 50px 30px;
+  font-size: 16px;
+} */
 
 .box button {
-  width: 200px;
-  height: 40px;
-  margin: 10px;
+  width: 150px;
+  height: 30px;
+  margin: 5px;
   background-color: #4f6f52;
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .box button:hover {
