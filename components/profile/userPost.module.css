@@ -36,17 +36,50 @@
   padding: 0;
 }
 
+.postBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .post {
-  margin-bottom: 20px;
+  margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  max-width: 370px;
+  width: 90%;
+}
+
+.postAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 10%;
+}
+
+.postAction button {
+  background-color: #4f6f52;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px auto;
+  cursor: pointer;
+}
+
+.postAction button:hover {
+  background-color: #1a4d2e;
 }
 
 .content {
   margin-bottom: 10px;
+  font-weight: 500;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -92,5 +125,26 @@
   .postContainer {
     max-height: 400px;
     overflow-y: auto;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+
+  .postBox {
+    width: 100%;
+  }
+
+  .post {
+    width: 85%;
+    max-width: 240px;
+  }
+
+  .postAction {
+    width: 15%;
+  }
+
+  .postAction button {
+    font-size: 12px;
   }
 }
