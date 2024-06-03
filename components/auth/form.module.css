@@ -53,3 +53,12 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+  .form button {
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+    font-size: 14px;
+  }
+}

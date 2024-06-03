@@ -1,2 +1,17 @@
 .about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about img {
+  width: 500px;
+  height: 500px;
+}
+
+@media screen and (max-width: 768px) {
+  .about img {
+    width: 400px;
+    height: 400px;
+  }
 }
