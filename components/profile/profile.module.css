@@ -27,6 +27,18 @@
   border-radius: 5px;
 }
 
+.passwordContainer {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-90%);
+  cursor: pointer;
+}
+
 .info button {
   width: 100%;
   margin: 10px auto 15px auto;
@@ -48,17 +60,6 @@
   color: #fff;
   margin: 10px auto;
 }
-
-/* .info span {
-  margin: 15px auto;
-  font-size: 14px;
-  color: #999;
-}
-
-.info span:hover {
-  cursor: pointer;
-  text-decoration: underline;
-} */
 
 @media screen and (max-width: 768px) {
   .info {

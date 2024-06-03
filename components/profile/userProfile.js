@@ -1,20 +1,24 @@
 "use client";
-
+import React, { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
 import styles from "./profile.module.css";
 import { usePathname, useRouter } from "next/navigation";
-// import LogoutBtn from "./logoutBtn";
 
 const UserProfile = () => {
   const { user } = useAuth();
   const userInfo = UseUserInfo(user);
   const router = useRouter();
   const pathName = usePathname();
-  // const handleLogout = LogoutBtn();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const maskPassword = (password) => {
-    return "*".repeat(password.length);
+    return showPassword ? password : "*".repeat(password.length);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -27,11 +31,21 @@ const UserProfile = () => {
           <input readOnly type="email" value={userInfo.userEmail} />
 
           <label>비밀번호</label>
-          <input
-            readOnly
-            type="password"
-            value={maskPassword(userInfo.userPassword)}
-          />
+          <div className={styles.passwordContainer}>
+            <input
+              readOnly
+              type={showPassword ? "text" : "password"}
+              value={maskPassword(userInfo.userPassword)}
+            />
+            <img
+              src={showPassword ? "/pw_hide.png" : "/pw_show.png"}
+              alt={showPassword ? "Hide" : "Show"}
+              onClick={togglePasswordVisibility}
+              width={20}
+              height={20}
+              className={styles.passwordToggle}
+            />
+          </div>
 
           <label>생년월일</label>
           <input readOnly type="text" value={userInfo.dob} />
@@ -48,10 +62,6 @@ const UserProfile = () => {
             <p>함께한 기도제목</p>
             <p>{">"}</p>
           </button> */}
-
-          {/* <div>
-            <span onClick={handleLogout}>{"< 로그아웃"}</span>
-          </div> */}
         </div>
       )}
     </>
