@@ -4,14 +4,14 @@ import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
 import styles from "./profile.module.css";
 import { usePathname, useRouter } from "next/navigation";
-import LogoutBtn from "./logoutBtn";
+// import LogoutBtn from "./logoutBtn";
 
 const UserProfile = () => {
   const { user } = useAuth();
   const userInfo = UseUserInfo(user);
   const router = useRouter();
   const pathName = usePathname();
-  const handleLogout = LogoutBtn();
+  // const handleLogout = LogoutBtn();
 
   const maskPassword = (password) => {
     return "*".repeat(password.length);
@@ -49,9 +49,9 @@ const UserProfile = () => {
             <p>{">"}</p>
           </button> */}
 
-          <div>
+          {/* <div>
             <span onClick={handleLogout}>{"< 로그아웃"}</span>
-          </div>
+          </div> */}
         </div>
       )}
     </>

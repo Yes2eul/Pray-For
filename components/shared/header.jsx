@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import styles from "./header.module.css";
 import { useAuth } from "@/hooks/useAuth";
+import LogoutBtn from "../profile/logoutBtn";
 
 const Header = () => {
   const router = useRouter();
   const { user, isLoggedIn } = useAuth();
+  const handleLogout = LogoutBtn();
 
   const handleNavigation = (path) => {
     if (isLoggedIn) {
@@ -33,13 +35,14 @@ const Header = () => {
 
       <nav>
         <ul>
+          <li onClick={() => handleNavigation("/about")}>ABOUT</li>
           <li onClick={() => handleNavigation("/home")}>HOME</li>
           {isLoggedIn ? (
             <li onClick={() => handleNavigation(`/${user.uid}`)}>MYPAGE</li>
           ) : (
             <li onClick={() => handleNavigation("/login")}>LOGIN</li>
           )}
-          <li>ABOUT</li>
+          <li onClick={handleLogout}>LOGOUT</li>
         </ul>
       </nav>
     </header>
