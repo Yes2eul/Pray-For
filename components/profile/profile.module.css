@@ -49,6 +49,17 @@
   margin: 10px auto;
 }
 
+.info span {
+  margin: 15px auto;
+  font-size: 14px;
+  color: #999;
+}
+
+.info span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
   .info {
     max-width: 320px;
