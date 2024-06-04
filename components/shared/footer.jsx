@@ -9,7 +9,7 @@ const Footer = () => {
       </div>
       <div className={styles.contact}>
         <p>
-          의견 보내기:
+          Contact:
           <a href="https://forms.gle/AoCVcnsn7zc2LrSD6">
             {" forms.gle/AoCVcnsn7zc2LrSD6"}
           </a>
