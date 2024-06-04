@@ -7,9 +7,17 @@
   padding: 10px;
 }
 
-.info h4 {
-  font-size: 18px;
-  margin: 30px auto;
+.nameBox {
+  margin: 30px auto 50px auto;
+}
+
+.hello {
+  font-size: 20px;
+}
+
+.customName {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .info label {

@@ -25,7 +25,11 @@ const UserProfile = () => {
     <>
       {userInfo && (
         <div className={styles.info}>
-          <h4>안녕하세요, {userInfo.userName}님</h4>
+          <div className={styles.nameBox}>
+            <span className={styles.hello}>안녕하세요, </span>
+            <span className={styles.customName}>{userInfo.userName}</span>
+            <span className={styles.hello}>님</span>
+          </div>
 
           <label>이메일</label>
           <input readOnly type="email" value={userInfo.userEmail} />

@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "KBIZ한마음고딕 L";
+  font-weight: normal;
+  src: url("../public/fonts/KBIZ한마음고딕\ L.otf") format("opentype");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: "KBIZ한마음고딕 L";
 }
 
 html,

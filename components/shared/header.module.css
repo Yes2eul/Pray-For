@@ -14,12 +14,13 @@
   width: 60%;
 
   float: left;
-  cursor: pointer;
 }
 
 .header img {
   width: 150px;
   height: 50px;
+
+  cursor: pointer;
 }
 
 .header nav {
@@ -36,12 +37,14 @@
   height: 80px;
   text-align: center;
   line-height: 80px;
+}
 
+.header nav ul li span {
   cursor: pointer;
 }
 
 .header img:hover,
-.header nav ul li:hover {
+.header nav ul li span:hover {
   /* background-color: #e8dfca; */
   opacity: 0.5;
 }
@@ -62,6 +65,8 @@
   }
   .header nav ul li {
     width: 25%;
+  }
+  .header nav ul li span {
     font-size: 10px;
   }
 }

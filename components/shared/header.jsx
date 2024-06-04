@@ -4,12 +4,19 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import styles from "./header.module.css";
 import { useAuth } from "@/hooks/useAuth";
-import LogoutBtn from "../profile/logoutBtn";
 
 const Header = () => {
   const router = useRouter();
   const { user, isLoggedIn } = useAuth();
-  const handleLogout = LogoutBtn();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      router.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleNavigation = (path) => {
     if (isLoggedIn) {
@@ -35,14 +42,26 @@ const Header = () => {
 
       <nav>
         <ul>
-          <li onClick={() => handleNavigation("/about")}>ABOUT</li>
-          <li onClick={() => handleNavigation("/home")}>HOME</li>
+          <li>
+            <span onClick={() => handleNavigation("/about")}>ABOUT</span>
+          </li>
+          <li>
+            <span onClick={() => handleNavigation("/home")}>HOME</span>
+          </li>
           {isLoggedIn ? (
-            <li onClick={() => handleNavigation(`/${user.uid}`)}>MYPAGE</li>
+            <li>
+              <span onClick={() => handleNavigation(`/${user.uid}`)}>
+                MYPAGE
+              </span>
+            </li>
           ) : (
-            <li onClick={() => handleNavigation("/login")}>LOGIN</li>
+            <li>
+              <span onClick={() => handleNavigation("/login")}>LOGIN</span>
+            </li>
           )}
-          <li onClick={handleLogout}>LOGOUT</li>
+          <li>
+            <span onClick={handleLogout}>LOGOUT</span>
+          </li>
         </ul>
       </nav>
     </header>
