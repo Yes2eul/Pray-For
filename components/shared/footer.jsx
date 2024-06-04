@@ -9,9 +9,9 @@ const Footer = () => {
       </div>
       <div className={styles.contact}>
         <p>
-          Contact:
+          Contact:{" "}
           <a href="https://forms.gle/AoCVcnsn7zc2LrSD6">
-            {" forms.gle/AoCVcnsn7zc2LrSD6"}
+            {"forms.gle/AoCVcnsn7zc2LrSD6"}
           </a>
         </p>
       </div>

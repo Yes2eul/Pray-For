@@ -133,9 +133,10 @@ const PostList = () => {
               <p className={styles.content}>{post.postContent}</p>
               <div className={styles.details}>
                 <p>{getTimeDifference(post.timestamp.toDate())}</p>
+
                 <button
                   onClick={() => toggleLike(post.postId, post.userId)}
-                  className={`${styles.button} ${
+                  className={`${styles.likeButton} ${
                     post.likes.likedUsers.includes(user?.uid)
                       ? styles.liked
                       : ""
@@ -144,8 +145,6 @@ const PostList = () => {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
-                    width="20"
-                    height="20"
                     className={styles.icon}
                     fill="white"
                   >
@@ -159,8 +158,8 @@ const PostList = () => {
             </li>
           ))}
           {visiblePosts < allPosts.length && (
-            <div className={styles.moreBtn}>
-              <button onClick={loadMorePosts} className={styles.button}>
+            <div className={styles.more}>
+              <button onClick={loadMorePosts} className={styles.moreButton}>
                 더 보기
               </button>
             </div>

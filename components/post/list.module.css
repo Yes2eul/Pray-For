@@ -65,10 +65,12 @@
 .icon {
   margin-right: 5px;
   vertical-align: middle;
+  width: 18px;
+  height: 18px;
 }
 
-.button,
-.loadMoreButton {
+.likeButton,
+.moreButton {
   background-color: #4f6f52;
   color: #fff;
   border: none;
@@ -77,8 +79,8 @@
   cursor: pointer;
 }
 
-.button:hover,
-.loadMoreButton:hover {
+.likeButton:hover,
+.moreButton:hover {
   background-color: #1a4d2e;
 }
 
@@ -90,7 +92,7 @@
   background-color: #4f6f52; /* 좋아요 버튼 취소시 원래 색상 */
 }
 
-.moreBtn {
+.more {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,5 +111,10 @@
   .content,
   .loading {
     font-size: 14px;
+  }
+
+  .author,
+  .details {
+    font-size: 12px;
   }
 }

@@ -46,5 +46,7 @@
 
   .post button {
     width: 20%;
+    width: 50px;
+    font-size: 12px;
   }
 }
