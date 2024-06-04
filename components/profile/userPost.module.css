@@ -57,6 +57,10 @@
   cursor: pointer;
 }
 
+.post img:hover {
+  opacity: 0.5;
+}
+
 .content {
   /* margin: 5px auto; */
   margin-bottom: 10px;

@@ -13,9 +13,9 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="en">
         <body id="container">
-          <Header />
+          <Header id="header" />
           <main id="main">{children}</main>
-          <Footer />
+          <Footer id="footer" />
         </body>
       </html>
     </AuthProvider>

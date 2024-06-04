@@ -1,7 +1,8 @@
 .header {
   width: 100%;
   height: 80px;
-  padding: 5px;
+
+  background-color: #f5efe6;
 }
 
 .logo {
@@ -39,20 +40,15 @@
   cursor: pointer;
 }
 
-.logo,
-.header nav ul li {
-  background-color: #f5efe6;
-}
-
-.logo:hover,
+.header img:hover,
 .header nav ul li:hover {
-  background-color: #e8dfca;
+  /* background-color: #e8dfca; */
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {
   .header {
     width: 100%;
-    padding: 5px;
   }
   .logo {
     width: 50%;
