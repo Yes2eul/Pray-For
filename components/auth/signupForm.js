@@ -83,7 +83,16 @@ export default function SignUpForm() {
       setError("");
       router.push("/login");
     } catch (error) {
-      setError(error.message);
+      let errorMessage = "signup-error";
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          errorMessage = "이미 사용 중인 이메일 주소입니다.";
+          break;
+
+        default:
+          break;
+      }
+      setError(errorMessage);
     }
   };
 
