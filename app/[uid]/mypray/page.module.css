@@ -9,3 +9,9 @@
 .list {
   height: 90%;
 }
+
+@media screen and (max-width: 768px) {
+  .back {
+    height: 7%;
+  }
+}

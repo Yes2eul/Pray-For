@@ -120,4 +120,13 @@
     width: 16px;
     height: 16px;
   }
+
+  .backButton {
+    width: 30px;
+    height: 30px;
+    margin: 10px auto 10px 10px;
+  }
+  .backButton p {
+    font-size: 12px;
+  }
 }
