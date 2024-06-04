@@ -41,20 +41,20 @@ export default function LoginForm() {
       setError("");
       router.push("/home");
     } catch (error) {
-      let errorMessage = "login-error";
+      let errorMessage = "";
       switch (error.code) {
         case "auth/user-not-found":
-          errorMessage = "유저가 존재하지 않습니다.";
+          errorMessage = "사용자가 존재하지 않습니다.";
           break;
-        case "auth/wrong-password":
-          errorMessage = "비밀번호가 올바르지 않습니다.";
+        case "auth/invalid-credential":
+          errorMessage = "이메일 또는 비밀번호가 올바르지 않습니다.";
           break;
-
         case "auth/too-many-requests":
           errorMessage = "잠시 후 다시 시도해 주세요.";
           break;
 
         default:
+          errorMessage = "로그인에 실패했습니다.";
           break;
       }
       setError(errorMessage);

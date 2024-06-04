@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import styles from "./header.module.css";
 import { useAuth } from "@/hooks/useAuth";
+import { auth } from "@/utils/firebase";
+import { removeAuthTokenFromSession } from "@/utils/setToken";
 
 const Header = () => {
   const router = useRouter();
@@ -11,8 +13,12 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await auth.signOut();
-      router.push("/");
+      if (isLoggedIn) {
+        await auth.signOut();
+        removeAuthTokenFromSession();
+        alert("로그아웃 되었습니다.");
+        router.push("/login");
+      }
     } catch (error) {
       console.error(error);
     }
