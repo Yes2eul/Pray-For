@@ -49,7 +49,6 @@
 
 .content {
   margin-bottom: 10px;
-  font-weight: 500;
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -107,7 +106,8 @@
     overflow-y: auto;
   }
 
-  .content {
+  .content,
+  .loading {
     font-size: 14px;
   }
 }

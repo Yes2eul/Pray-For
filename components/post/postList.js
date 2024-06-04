@@ -167,7 +167,7 @@ const PostList = () => {
           )}
         </ul>
       ) : (
-        <p>Loading...</p>
+        <p className={styles.loading}>Loading...</p>
       )}
     </div>
   );

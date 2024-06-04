@@ -1,0 +1,46 @@
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editTextarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.editTextarea:focus {
+  outline: none;
+  border-color: #4f6f52;
+}
+
+.editForm div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.saveBtn,
+.cancelBtn {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.saveBtn:hover,
+.cancelBtn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .editTextarea {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+  }
+}
