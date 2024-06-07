@@ -13,10 +13,6 @@ const UserProfile = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const maskPassword = (password) => {
-    return showPassword ? password : "*".repeat(password.length);
-  };
-
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -39,7 +35,7 @@ const UserProfile = () => {
             <input
               readOnly
               type={showPassword ? "text" : "password"}
-              value={maskPassword(userInfo.userPassword)}
+              value={showPassword ? userInfo.userPassword : "********"}
             />
             <img
               src={showPassword ? "/pw_hide.png" : "/pw_show.png"}

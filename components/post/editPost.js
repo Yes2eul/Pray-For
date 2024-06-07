@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 const EditPost = ({ post, onCancel, onSave }) => {
   const { user } = useAuth();
   const router = useRouter("");
+  // const userInfo = UseUserInfo(user);
   const [updatedContent, setUpdatedContent] = useState(post.postContent);
 
   const handleUpdateChange = (event) => {
