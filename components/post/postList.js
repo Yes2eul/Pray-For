@@ -61,7 +61,8 @@ const PostList = () => {
   };
 
   const maskName = (name) => {
-    return name.charAt(0) + "*".repeat(name.length - 1);
+    // return name.charAt(0) + "*".repeat(name.length - 1);
+    return "*".repeat(name.length);
   };
 
   const loadMorePosts = () => {
