@@ -12,6 +12,22 @@ export default function RootLayout({ children }) {
   return (
     <AuthProvider>
       <html lang="en">
+        <head>
+          <meta
+            name="google-site-verification"
+            content="XIsRXS6AFkwK7jZTBa9rDYbx_l1qZ1Q4W0JLST5hbgc"
+          />
+          <meta
+            name="description"
+            content="Pray For: 기독교 온라인 공동체로 서로의 감사와 기도제목을 공유할 수 있는 플랫폼"
+          />
+          <meta
+            name="keywords"
+            content="Pray For, 기도, 기독교, 감사, 공동체, 온라인"
+          />
+          <meta name="author" content="YS" />
+          <link rel="icon" href="/favicon.ico" />
+        </head>
         <body id="container">
           <Header id="header" />
           <main id="main">{children}</main>
