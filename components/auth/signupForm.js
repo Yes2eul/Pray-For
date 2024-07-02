@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import bcrypt from "bcryptjs";
 import styles from "./form.module.css";
 
 export default function SignUpForm() {
@@ -62,6 +63,8 @@ export default function SignUpForm() {
     }
 
     try {
+      const hashedPassword = await bcrypt.hash(signupInputs.password, 10);
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         signupInputs.email,
@@ -71,7 +74,7 @@ export default function SignUpForm() {
       const newUser = {
         uid: userCredential.user.uid,
         userEmail: signupInputs.email,
-        userPassword: signupInputs.password,
+        userPassword: hashedPassword,
         userName: signupInputs.userName,
         dob: signupInputs.dob,
         church: signupInputs.church,

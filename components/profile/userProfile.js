@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import UseUserInfo from "@/hooks/useUserInfo";
@@ -30,7 +31,7 @@ const UserProfile = () => {
           <label>이메일</label>
           <input readOnly type="email" value={userInfo.userEmail} />
 
-          <label>비밀번호</label>
+          {/* <label>비밀번호</label>
           <div className={styles.passwordContainer}>
             <input
               readOnly
@@ -46,6 +47,25 @@ const UserProfile = () => {
               className={styles.passwordToggle}
             />
           </div>
+
+          {showPassword && (
+            <>
+              <label>현재 비밀번호</label>
+              <div className={styles.passwordContainer}>
+                <input />
+              </div>
+
+              <label>새 비밀번호</label>
+              <div className={styles.passwordContainer}>
+                <input />
+              </div>
+
+              <label>새 비밀번호 확인</label>
+              <div className={styles.passwordContainer}>
+                <input />
+              </div>
+            </>
+          )} */}
 
           <label>생년월일</label>
           <input readOnly type="text" value={userInfo.dob} />
