@@ -6,7 +6,10 @@ import {
   validateName,
   validatePassword,
 } from "@/utils/validate";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -71,6 +74,8 @@ export default function SignUpForm() {
         signupInputs.password
       );
 
+      await sendEmailVerification(userCredential.user);
+
       const newUser = {
         uid: userCredential.user.uid,
         userEmail: signupInputs.email,
@@ -84,6 +89,7 @@ export default function SignUpForm() {
       await setDoc(doc(db, "users", newUser.uid), newUser);
 
       setError("");
+      alert("회원가입을 완료했습니다. 인증 이메일을 확인해 주세요.");
       router.push("/login");
     } catch (error) {
       let errorMessage = "";
