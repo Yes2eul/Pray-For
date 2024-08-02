@@ -120,6 +120,9 @@ export default function LoginForm() {
           인증 이메일 재전송
         </button>
       )}
+      <span onClick={() => router.push("/reset-password")}>
+        {"? 비밀번호 재설정"}
+      </span>
       <span
         onClick={() => {
           router.push("/signup");
