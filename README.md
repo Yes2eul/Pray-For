@@ -1,7 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Pray%20For%20&textBg=false&animation=fadeIn)
 
 
-🌐 배포 url: [Pray-For](pray-for.vercel.app)
+🌐 배포 url: [Pray-For](https://pray-for.vercel.app/)
 
 🔗 GitHub: [GitHub](github.com/Yes2eul/pray-for)
 
