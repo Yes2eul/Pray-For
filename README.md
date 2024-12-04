@@ -3,7 +3,7 @@
 
 🌐 배포 url: [Pray-For](https://pray-for.vercel.app/)
 
-🔗 GitHub: [GitHub](github.com/Yes2eul/pray-for)
+🔗 GitHub: [GitHub](https://github.com/Yes2eul/pray-for)
 
 ---
 
